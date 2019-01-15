@@ -66,6 +66,186 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-axios" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/15/axios/" class="article-date">
+  <time datetime="2019-01-15T13:20:32.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/15/axios/">axios</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>axios</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lincoln-xzc.github.io/2019/01/15/axios/" data-id="cjqxxhd1r0000z60971lqoeku" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue-router" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/15/vue-router/" class="article-date">
+  <time datetime="2019-01-15T13:20:21.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/15/vue-router/">vue-router</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>vue-router</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lincoln-xzc.github.io/2019/01/15/vue-router/" data-id="cjqxxhd1x0001z60920ipqj6l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vuex" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/15/vuex/" class="article-date">
+  <time datetime="2019-01-15T13:18:34.000Z" itemprop="datePublished">2019-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/15/vuex/">vuex</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a href="https://vuex.vuejs.org/zh/" target="_blank" rel="noopener">npm install vuex es-promise –save</a>这个命令来安装vuex和es6-promise，因为vuex依赖Promise。在src文件下面新建store文件，然后在store文件夹下面创建如下文件:</p>
+<ul>
+<li>action.js，action.js里面是vuex state 异步的相关操作。你也可以在对应的action里面进行一些接口的调用，然后进行数据的存在，但是我个人不是很喜欢。<pre><code>import * as types from &quot;./types&quot;;
+export default{
+  [types.TOKEN]({commit}, token){
+  commit(types.TOKEN, token);
+  },
+}
+</code></pre></li>
+<li>getters.js，getters.js是对state的数据进行一些操作，然后被返回。</li>
+<li>mutation.js, mutation.js实现state的同步保存。</li>
+<li>store.js， 初始化state的值，创建一个store。</li>
+<li>types.js state类型变量定义。<br>项目中如果组件的传递数据不是很复杂，可以直接用官方推荐的new EventBus()的方式，不需要用到vuex,因为没有什么数据传递，用vuex反而是个累赘。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lincoln-xzc.github.io/2019/01/15/vuex/" data-id="cjqxxgt1y0000yz09vcivaun2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-基于vue-cli搭建vue-vuex-axios-element-ui项目" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/14/基于vue-cli搭建vue-vuex-axios-element-ui项目/" class="article-date">
+  <time datetime="2019-01-14T15:31:19.012Z" itemprop="datePublished">2019-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/14/基于vue-cli搭建vue-vuex-axios-element-ui项目/">基于vue-cli搭建vue+vuex+axios+element-ui项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如何基于vue脚手架搭建一个前端项目，其实是很容易的。本编文章就教大家如何基于vue的的脚手架集成vue+vuex+axios+element-ui的前端项目。那话就不多了，直接上干货。</p>
+<h1 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h1><h3 id="安装vue-cli"><a href="#安装vue-cli" class="headerlink" title="安装vue-cli"></a>安装vue-cli</h3><p>[vue init webpack projectName], 如果没有安装nodejs的，请先安装nodejs。然后根据对应的提示输入y/n,如图：</p>
+<p><img src="../../public/css/images/vue_init.png" alt="image"><br>执行npm install 下载package.json中依赖的包，包安装完成后执行npm run dev，本地运行。在浏览器打开默认的localhost:8080，就可以看到对应的效果了。</p>
+<p>接下来我们可以来看下项目结构，可以看到生成的项目结构如下图。</p>
+<ul>
+<li>[build] webpack打包的相关配置，里面分成了dev和production两种打包模式，根据不同的环境进行打包。</li>
+<li>[config] webpack打包不同环境的配置，这里是基本配置，我的做法是在项目根目录下配置一个.env.json文件，然后在这里引入，然后进行对应配置，不同的环境就改变env.json文件的参数。</li>
+<li>[node_modules] 项目依赖的第三方库</li>
+<li>[src] 重点目录结构，src下面我们可以到有:assets(存放一些图片)、components(公共组件)、router(vue-router配置)三个文件夹。</li>
+<li>[static] 静态资源文件，在项目打包的时候不会被编译</li>
+</ul>
+<p><img src="../../public/css/images/vue-structure.png" alt="image"></p>
+<p>其他的文件就不一一介绍了，可以自己去了解。在项目中也是很重要的，建议去了解一下。由于篇幅太长，觉得把vuex, router, axios，单独的分出来讲解。</p>
+<h3 id="模板列表"><a href="#模板列表" class="headerlink" title="模板列表"></a>模板列表</h3><ul>
+<li><a href="https://lincoln-xzc.github.io">vuex安装，配置</a></li>
+<li><a href="https://lincoln-xzc.github.io">router配置、页面登录验证</a></li>
+<li><a href="https://lincoln-xzc.github.io">axios的封装以及全局拦截的配置</a></li>
+</ul>
+<h3 id="Element-UI、font-awesome的引入"><a href="#Element-UI、font-awesome的引入" class="headerlink" title="Element-UI、font-awesome的引入"></a>Element-UI、font-awesome的引入</h3><p>执行npm i <a href="http://element-cn.eleme.io/#/zh-CN/component/installation" target="_blank" rel="noopener">element-ui</a> <a href="http://www.fontawesome.com.cn/" target="_blank" rel="noopener">font-awesome</a>命令，安装完成之后打开main.js，全局引入,如下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &apos;element-ui/lib/theme-chalk/index.css&apos;</span><br><span class="line">import &apos;font-awesome/css/font-awesome.min.css&apos;</span><br><span class="line"> ...</span><br><span class="line">import ElementUI from &apos;element-ui&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(ElementUI);</span><br></pre></td></tr></table></figure></p>
+<p>引入后，在项目中就直接可以直接使用了。还有一种方式，通过局部引入，组件里面需要用到什么内容，通过import {message} from ‘element-ui’这种方式来引入。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lincoln-xzc.github.io/2019/01/14/基于vue-cli搭建vue-vuex-axios-element-ui项目/" data-id="cjqxxgt250001yz09jafbhabg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-基于vue-cli-构建的vue项目，优化webpack打包速度" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/13/基于vue-cli-构建的vue项目，优化webpack打包速度/" class="article-date">
@@ -119,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lincoln-xzc.github.io/2019/01/13/基于vue-cli-构建的vue项目，优化webpack打包速度/" data-id="cjqxx3m3i0001vz09crw7w64e" class="article-share-link">Share</a>
+      <a data-url="https://lincoln-xzc.github.io/2019/01/13/基于vue-cli-构建的vue项目，优化webpack打包速度/" data-id="cjqxx9v1n0001xu09yakbrvxu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lincoln-xzc.github.io/2019/01/13/hello-word/" data-id="cjqxx3m2v0000vz09vyppkzax" class="article-share-link">Share</a>
+      <a data-url="https://lincoln-xzc.github.io/2019/01/13/hello-word/" data-id="cjqxx9v1f0000xu09qycdzh7p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -205,11 +385,23 @@
       <ul>
         
           <li>
-            <a href="/2019/01/13/基于vue-cli-构建的vue项目，优化webpack打包速度/">基于vue-cli构建的vue项目，优化webpack打包速度</a>
+            <a href="/2019/01/15/axios/">axios</a>
           </li>
         
           <li>
-            <a href="/2019/01/13/hello-word/">Hello World</a>
+            <a href="/2019/01/15/vue-router/">vue-router</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/15/vuex/">vuex</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/14/基于vue-cli搭建vue-vuex-axios-element-ui项目/">基于vue-cli搭建vue+vuex+axios+element-ui项目</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/13/基于vue-cli-构建的vue项目，优化webpack打包速度/">基于vue-cli构建的vue项目，优化webpack打包速度</a>
           </li>
         
       </ul>
