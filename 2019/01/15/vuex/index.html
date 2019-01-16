@@ -7,18 +7,18 @@
   
   <title>vuex | lincoln-xzc</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装npm install vuex es-promise –save这个命令来安装vuex和es6-promise，因为vuex依赖Promise。在src文件下面新建store文件，然后在store文件夹下面创建如下文件:  action.js，action.js里面是vuex state 异步的相关操作。你也可以在对应的action里面进行一些接口的调用，然后进行数据的存在，但是我个人">
+  <meta name="description" content="安装npm install vuex es-promise –save这个命令来安装vuex和es6-promise，因为vuex依赖Promise。在src文件下面新建store文件，然后在store文件夹下面创建如下文件:  types.js 我们将常量放在types里面进行统一管理，方便协作,然后使用常量来代替事件类型。 12export const TOKEN = &amp;apos;toke">
 <meta name="keywords" content="lincoln-xzc lincoln xzc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vuex">
 <meta property="og:url" content="https://lincoln-xzc.github.io/2019/01/15/vuex/index.html">
 <meta property="og:site_name" content="lincoln-xzc">
-<meta property="og:description" content="安装npm install vuex es-promise –save这个命令来安装vuex和es6-promise，因为vuex依赖Promise。在src文件下面新建store文件，然后在store文件夹下面创建如下文件:  action.js，action.js里面是vuex state 异步的相关操作。你也可以在对应的action里面进行一些接口的调用，然后进行数据的存在，但是我个人">
+<meta property="og:description" content="安装npm install vuex es-promise –save这个命令来安装vuex和es6-promise，因为vuex依赖Promise。在src文件下面新建store文件，然后在store文件夹下面创建如下文件:  types.js 我们将常量放在types里面进行统一管理，方便协作,然后使用常量来代替事件类型。 12export const TOKEN = &amp;apos;toke">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-15T15:52:01.985Z">
+<meta property="og:updated_time" content="2019-01-16T16:25:26.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vuex">
-<meta name="twitter:description" content="安装npm install vuex es-promise –save这个命令来安装vuex和es6-promise，因为vuex依赖Promise。在src文件下面新建store文件，然后在store文件夹下面创建如下文件:  action.js，action.js里面是vuex state 异步的相关操作。你也可以在对应的action里面进行一些接口的调用，然后进行数据的存在，但是我个人">
+<meta name="twitter:description" content="安装npm install vuex es-promise –save这个命令来安装vuex和es6-promise，因为vuex依赖Promise。在src文件下面新建store文件，然后在store文件夹下面创建如下文件:  types.js 我们将常量放在types里面进行统一管理，方便协作,然后使用常量来代替事件类型。 12export const TOKEN = &amp;apos;toke">
   
   
     <link rel="icon" href="/favicon.png">
@@ -89,23 +89,36 @@
       
         <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a href="https://vuex.vuejs.org/zh/" target="_blank" rel="noopener">npm install vuex es-promise –save</a>这个命令来安装vuex和es6-promise，因为vuex依赖Promise。在src文件下面新建store文件，然后在store文件夹下面创建如下文件:</p>
 <ul>
-<li>action.js，action.js里面是vuex state 异步的相关操作。你也可以在对应的action里面进行一些接口的调用，然后进行数据的存在，但是我个人不是很喜欢。<pre><code>import * as types from &quot;./types&quot;;
-export default{
-  [types.TOKEN]({commit}, token){
-  commit(types.TOKEN, token);
-  },
-}
-</code></pre></li>
-<li>getters.js，getters.js是对state的数据进行一些操作，然后被返回。</li>
-<li>mutation.js, mutation.js实现state的同步保存。</li>
-<li>store.js， 初始化state的值，创建一个store。</li>
-<li>types.js state类型变量定义。<br>项目中如果组件的传递数据不是很复杂，可以直接用官方推荐的new EventBus()的方式，不需要用到vuex,因为没有什么数据传递，用vuex反而是个累赘。</li>
+<li><p>types.js 我们将常量放在types里面进行统一管理，方便协作,然后使用常量来代替事件类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export const TOKEN = &apos;token&apos;;</span><br><span class="line">export const SOME_STATE = &apos;some_state&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mutation.js, 在vuex中改变state的方法就是提交mutation，Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import &#123;TOKEN, SOME_STATE&#125; from &apos;./types&apos;</span><br><span class="line">export default&#123;</span><br><span class="line">    increment(state, list)&#123;</span><br><span class="line">        state.list = list;</span><br><span class="line">    &#125;,</span><br><span class="line">//或者使用 ES2015 风格的计算属性命名功能来使用一个常量作为函数名</span><br><span class="line">    [TOKEN](state, token)&#123;</span><br><span class="line">        state.token = token;</span><br><span class="line">    &#125;,</span><br><span class="line">    [SOME_STATE](state, some_state)&#123;</span><br><span class="line">        state.some_state = some_state;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>在组件里面可以使用this.$store.commit(‘xxx’)或者配合mapMutations来进行状态的改变，具体的用法自己看官网，官网介绍的很详细。</p>
+<ul>
+<li><p>action.js，action.js里面是vuex state 异步的相关操作。你也可以在对应的action里面进行一些接口的调用，然后进行数据的存在，但是我个人不是很喜欢。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import * as types from &quot;./types&quot;;</span><br><span class="line">export default&#123;</span><br><span class="line">    increment(&#123;commit&#125;, list)&#123;</span><br><span class="line">        //这里可以进行一些其他操作</span><br><span class="line">        commit(&apos;increment&apos;, list);</span><br><span class="line">    &#125;</span><br><span class="line">    //使用es5的方式</span><br><span class="line">    [types.TOKEN](&#123;commit&#125;, token)&#123;</span><br><span class="line">	    commit(types.TOKEN, token);</span><br><span class="line">    &#125;,</span><br><span class="line">    [types.SOME_STATE](&#123;commit&#125;, some_state)&#123;</span><br><span class="line">        commit(types.SOME_STATE, some_state);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>getters.js，getters.js是对state的数据进行一些操作，然后被返回。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export default&#123;</span><br><span class="line">    getters:&#123;</span><br><span class="line">        doneTodos: state =&gt; &#123;</span><br><span class="line">            return state.list.filter(item =&gt; item.done)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在组件computed中通过this.$store.getters.doneTodos或者搭配mapGetters来使用。</p>
+<ul>
+<li>store.js， 初始化state的值，并创建一个store。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import &apos;es6-promise/auto&apos;;</span><br><span class="line">import Vuex from &apos;vuex&apos;;</span><br><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line">import actions from &apos;./action&apos;;</span><br><span class="line">import getters from &apos;./getters&apos;;</span><br><span class="line">import mutations from &apos;./mutations&apos;;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line">const state = &#123;</span><br><span class="line">	token: null,</span><br><span class="line">	list: [],</span><br><span class="line">    some_state: &apos;&apos;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">	state,</span><br><span class="line">	getters,</span><br><span class="line">	actions,</span><br><span class="line">	mutations</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>配置好store以后，打开main.js,加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import store from &apos;./store/store&apos;</span><br><span class="line">new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;,</span><br><span class="line">    store,</span><br><span class="line">    components: &#123;App&#125;,</span><br><span class="line">    template: &apos;&lt;App/&gt;&apos;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Vuex在组件中管理数据是很方便的，在很多场景下都能使用，比如在列表中，记录查询条件，查询页数，然后进入详情页操作后，返回的时候从state里面取出对应的数据，进行从新渲染。虽然keep-alive也能实现如此的功能，但是keep-alive缓存了组件，不让组件从走生命周期，如果数据更新，列表数据却不进行更改。</p>
+<p>项目中如果组件的传递数据不是很复杂，可以直接用EventBus的方式，不需要用到vuex,因为没有什么数据传递,存储，用vuex反而是个累赘。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lincoln-xzc.github.io/2019/01/15/vuex/" data-id="cjqxy1q3y00034909um38ge5e" class="article-share-link">Share</a>
+      <a data-url="https://lincoln-xzc.github.io/2019/01/15/vuex/" data-id="cjqzea5ns0003fs09x9nnxt41" class="article-share-link">Share</a>
       
       
     </footer>
